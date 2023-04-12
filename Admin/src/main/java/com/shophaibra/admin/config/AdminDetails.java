@@ -1,7 +1,7 @@
 package com.shophaibra.admin.config;
 
-import com.example.library.model.Admin;
-import com.example.library.model.Role;
+import com.shophaibra.library.model.Admin;
+import com.shophaibra.library.model.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
