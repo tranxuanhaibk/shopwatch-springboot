@@ -6,12 +6,14 @@ import com.shophaibra.library.repository.AdminRepository;
 import com.shophaibra.library.repository.RoleRepository;
 import com.shophaibra.library.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 
 @Service
 public class AdminServiceImpl implements AdminService {
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     private AdminRepository adminRepository;
@@ -30,7 +32,7 @@ public class AdminServiceImpl implements AdminService {
         admin.setFirstName(adminDto.getFirstName());
         admin.setLastName(adminDto.getLastName());
         admin.setUsername(adminDto.getUsername());
-        admin.setPassword(adminDto.getPassword());
+        admin.setPassword(passwordEncoder.encode(adminDto.getPassword()));
         admin.setRoles(Arrays.asList(roleRepository.findByName("ADMIN")));
 
         return adminRepository.save(admin);
