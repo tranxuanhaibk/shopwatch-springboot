@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -25,7 +26,7 @@ public class LoginController {
 
     @GetMapping("/register")
     public String register(Model model) {
-        model.addAttribute("adminDto", new Admin());
+        model.addAttribute("adminDto", new AdminDto());
         return "register";
     }
 
@@ -34,11 +35,12 @@ public class LoginController {
         return "forgot-password";
     }
     @PostMapping("/register-new")
-    public String addNewAdmin(@Valid @ModelAttribute("adminDto") AdminDto adminDto,
+    public String addNewAdmin(@Valid @ModelAttribute("adminDto")AdminDto adminDto,
                               BindingResult result,
                               Model model,
-                              RedirectAttributes redirectAttributes) {
+                              HttpSession session) {
         try {
+            session.removeAttribute("message");
             if (result.hasErrors()) {
                 model.addAttribute("adminDto", adminDto);
                 return "register";
@@ -47,20 +49,21 @@ public class LoginController {
             Admin admin = adminService.findByUsername(userName);
             if (admin != null) {
                 model.addAttribute("adminDto", adminDto);
-                redirectAttributes.addFlashAttribute("message", "Your email has been registerd!");
+                session.setAttribute("message", "Your email has been registerd!");
                 return "register";
             }
             if (adminDto.getPassword().equals(adminDto.getRepeatPassword())) {
                 adminService.save(adminDto);
                 model.addAttribute("adminDto", adminDto);
-                redirectAttributes.addFlashAttribute("message", "Register successfully!");
+                session.setAttribute("message", "Register successfully!");
             } else {
-                adminService.save(adminDto);
                 model.addAttribute("adminDto", adminDto);
-                redirectAttributes.addFlashAttribute("message", "Password don't matching");
+                session.setAttribute("message", "Password don't matching");
+                return "register";
             }
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("message", "Can not register because error server");
+            e.printStackTrace();
+            session.setAttribute("message", "Can not register because error server");
         }
         return "register";
     }
