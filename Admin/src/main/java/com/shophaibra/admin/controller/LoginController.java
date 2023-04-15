@@ -4,6 +4,7 @@ import com.shophaibra.library.dto.AdminDto;
 import com.shophaibra.library.model.Admin;
 import com.shophaibra.library.service.impl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +18,8 @@ import javax.validation.Valid;
 
 @Controller
 public class LoginController {
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
     @Autowired
     private AdminServiceImpl adminService;
     @GetMapping("/login")
@@ -43,6 +46,7 @@ public class LoginController {
             session.removeAttribute("message");
             if (result.hasErrors()) {
                 model.addAttribute("adminDto", adminDto);
+                result.toString();
                 return "register";
             }
             String userName = adminDto.getUsername();
@@ -53,6 +57,7 @@ public class LoginController {
                 return "register";
             }
             if (adminDto.getPassword().equals(adminDto.getRepeatPassword())) {
+                adminDto.setPassword(passwordEncoder.encode(adminDto.getPassword()));
                 adminService.save(adminDto);
                 model.addAttribute("adminDto", adminDto);
                 session.setAttribute("message", "Register successfully!");
