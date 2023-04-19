@@ -24,13 +24,6 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <div>
-                        <form th:action="@{/search-result/0}" method="get">
-                            <label for="search"></label>
-                            <input type="text" id="search" name="keyword" placeholder="Search products">
-                            <button type="submit" class="btn btn-primary">Search</button>
-                        </form>
-                    </div>
                     <div th:if = "${size == 0}">
                         <p>No product in shop</p>
                     </div>
