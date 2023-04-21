@@ -7,6 +7,8 @@ import com.shophaibra.library.service.CategoryService;
 import com.shophaibra.library.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -119,7 +121,7 @@ public class ProductController {
         if (principal == null) {
             return "redirect:/login";
         }
-        Page<Product> products = productService.pageProducts(pageNo);
+        Page<ProductDto> products = productService.pageProducts(pageNo);
         model.addAttribute("title", "Manager Product");
         model.addAttribute("size", products.getSize());
         model.addAttribute("totalPages", products.getTotalPages());
@@ -136,7 +138,7 @@ public class ProductController {
         if (principal == null) {
             return "redirect:/login";
         }
-        Page<Product> products = productService.searchProducts(pageNo, keyword);
+        Page<ProductDto> products = productService.searchProducts(pageNo, keyword);
         model.addAttribute("title", "Search Result");
         model.addAttribute("products", products);
         model.addAttribute("size", products.getSize());
