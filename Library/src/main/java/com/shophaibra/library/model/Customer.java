@@ -24,6 +24,7 @@ public class Customer {
     private String username;
     private String country;
     private String address;
+    private String password;
 
     @Column(name="phone_number")
     private String phoneNumber;
