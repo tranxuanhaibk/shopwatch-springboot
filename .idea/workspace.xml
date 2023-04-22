@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7cf80fc5-b518-46dd-978c-be5f14df9f45" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/shophaibra/customer/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/shophaibra/customer/controller/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/java/com/shophaibra/customer/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/com/shophaibra/customer/controller/ProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/fragments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/product-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/product-detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/resources/templates/shop.html" afterDir="false" />
@@ -147,8 +145,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Customer/src/main/java/com/shophaibra/customer/controller/ProductController.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="3" />
+          <line>31</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
