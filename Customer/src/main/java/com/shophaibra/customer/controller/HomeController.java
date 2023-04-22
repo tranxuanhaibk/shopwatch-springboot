@@ -21,7 +21,7 @@ public class HomeController {
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = {"/index", "/"}, method = RequestMethod.GET)
     public String home(Model model) {
         return "home";
     }

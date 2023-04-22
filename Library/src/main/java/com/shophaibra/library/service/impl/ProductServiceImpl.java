@@ -157,4 +157,15 @@ public class ProductServiceImpl implements ProductService {
         List subList = list.subList(startIndex, endIndex);
         return new PageImpl(subList, pageable, list.size());
     }
+
+    /*Customer*/
+    @Override
+    public List<Product> getAllProducts() {
+        return productRepository.getAllProducts();
+    }
+
+    @Override
+    public List<Product> listViewProducts() {
+        return productRepository.listViewProducts();
+    }
 }
