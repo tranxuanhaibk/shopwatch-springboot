@@ -43,8 +43,8 @@ public class ProductServiceImpl implements ProductService {
             product.setDescription(productDto.getDescription());
             product.setCategory(productDto.getCategory());
             product.setSalePrice(productDto.getSalePrice());
-            product.setCostPrice(product.getCostPrice());
-            product.setCurrentQuantity(product.getCurrentQuantity());
+            product.setCostPrice(productDto.getCostPrice());
+            product.setCurrentQuantity(productDto.getCurrentQuantity());
             product.set_activated(true);
             product.set_deleted(false);
             return productRepository.save(product);
@@ -70,8 +70,8 @@ public class ProductServiceImpl implements ProductService {
             product.setDescription(productDto.getDescription());
             product.setCategory(productDto.getCategory());
             product.setSalePrice(productDto.getSalePrice());
-            product.setCostPrice(product.getCostPrice());
-            product.setCurrentQuantity(product.getCurrentQuantity());
+            product.setCostPrice(productDto.getCostPrice());
+            product.setCurrentQuantity(productDto.getCurrentQuantity());
             return productRepository.save(product);
         } catch (Exception e) {
             e.printStackTrace();
