@@ -28,4 +28,8 @@ public interface ProductService {
     List<Product> getRelatedProducts(Long categoryId);
 
     List<Product> getProductsInCategory(Long categoryId);
+
+    List<Product> filterHighPrice();
+
+    List<Product> filterLowPrice();
 }
