@@ -1,5 +1,6 @@
 package com.shophaibra.library.service.impl;
 
+import com.shophaibra.library.dto.CategoryDto;
 import com.shophaibra.library.model.Category;
 import com.shophaibra.library.repository.CategoryRepository;
 import com.shophaibra.library.service.CategoryService;
@@ -66,5 +67,10 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public List<Category> findAllActivated() {
         return categoryRepository.findAllByActivated();
+    }
+
+    @Override
+    public List<CategoryDto> getCategoryAndProduct() {
+        return categoryRepository.getCategoryAndProduct();
     }
 }
