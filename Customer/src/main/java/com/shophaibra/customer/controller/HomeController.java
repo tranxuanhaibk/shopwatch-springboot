@@ -3,6 +3,7 @@ package com.shophaibra.customer.controller;
 import com.shophaibra.library.dto.ProductDto;
 import com.shophaibra.library.model.Category;
 import com.shophaibra.library.model.Customer;
+import com.shophaibra.library.model.ShoppingCart;
 import com.shophaibra.library.service.CategoryService;
 import com.shophaibra.library.service.CustomerService;
 import com.shophaibra.library.service.ProductService;
@@ -30,9 +31,12 @@ public class HomeController {
 
     @RequestMapping(value = {"/index", "/"}, method = RequestMethod.GET)
     public String home(Model model, Principal principal, HttpSession session) {
-        if(principal != null){
+        if (principal != null) {
             session.setAttribute("username", principal.getName());
-        }else{
+            Customer customer = customerService.findByUsername(principal.getName());
+            ShoppingCart cart = customer.getShoppingCart();
+            session.setAttribute("totalItems", cart.getTotalItems());
+        } else {
             session.removeAttribute("username");
         }
         return "home";
