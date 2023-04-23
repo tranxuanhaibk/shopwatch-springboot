@@ -5,8 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.List;
+
 
 @Data
 @AllArgsConstructor
@@ -16,35 +18,35 @@ import java.util.List;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="customer_id")
+    @Column(name = "customer_id")
     private Long id;
 
+    @Size(min = 3, max = 15, message = "First name should have 3-15 characters")
     private String firstName;
+    @Size(min = 3, max = 15, message = "Last name should have 3-15 characters")
     private String lastName;
     private String username;
     private String country;
-    private String address;
-    private String password;
-
-    @Column(name="phone_number")
+    @Column(name = "phone_number")
     private String phoneNumber;
+    private String address;
 
+    private String password;
     @Lob
-    @Column(name="image", columnDefinition = "MEDIUMBLOB")
+    @Column(name = "image", columnDefinition = "MEDIUMBLOB")
     private String image;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "city_id", referencedColumnName = "city_id")
-    private City city;
+    @Column(name = "city")
+    private String city;
 
     @OneToOne(mappedBy = "customer")
     private ShoppingCart shoppingCart;
-
     @OneToMany(mappedBy = "customer")
-    private List<Order> orderList;
+    private List<Order> orders;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "customers_roles", joinColumns = @JoinColumn(name = "customer_id", referencedColumnName = "city_id"),
-    inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"))
+    @JoinTable( name = "customers_roles",
+            joinColumns = @JoinColumn(name = "customer_id", referencedColumnName = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"))
     private Collection<Role> roles;
 }
