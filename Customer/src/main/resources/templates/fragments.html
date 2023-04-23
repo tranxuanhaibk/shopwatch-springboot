@@ -35,16 +35,18 @@
                     <div class="our-link">
                         <ul>
                             <li><a href="#"> Call US : +84967631186</a></li>
-                            <li><a href="#"><i class="fas fa-location-arrow"></i> Địa chỉ: Cm Lĩnh, Cm Xuyên, Hà Tĩnh</a></li>
+                            <li><a href="#"><i class="fas fa-location-arrow"></i> Address: Km9, Nguyen Trai, Thanh Xuan, Ha
+                                Noi</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="login-box">
-                        <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In" onchange="location = this.value;">
-<!--                            <option th:value="${username != null} ? ${username} : 'Authenticate'"></option>-->
-                            <option value="http://localhost:8020/shop/login">Sign In</option>
-                            <option value="http://localhost:8020/shop/register">Sign Up</option>
+                        <select id="" class="selectpicker show-tick form-control" data-placeholder="Sign In" onchange="location = this.value;">
+                            <option th:text="${session.username != null} ? ${session.username} : 'Authentication'"></option>
+                            <option th:if = "${session.username == null}" value="http://localhost:8020/shop/login">Sign In</option>
+                            <option th:if = "${session.username != null}" value="http://localhost:8020/shop/logout">Log out</option>
+                            <option value="http://localhost:8020/shop/register" >Sign Up</option>
                         </select>
                     </div>
                     <div class="text-slid-box">
